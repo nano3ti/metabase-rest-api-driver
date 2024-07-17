@@ -1,0 +1,31 @@
+info:
+  name: Metabase REST API Driver
+  version: 1.0.0-SNAPSHOT-0.1.0
+  description: Allows Metabase to connect to REST API service.
+driver:
+  name: rest
+  display-name: REST
+  lazy-load: true
+  connection-properties:
+    - name: url
+      display-name: Base URL
+      type: string
+      default: http://localhost:8000
+      required: true
+    # - merge:
+    #   - password
+    #   - name: auth-token
+    #     display-name: Token
+    #     required: false
+    - name: auth-token
+      display-name: Token
+      type: string
+      required: false
+    - name: tables
+      display-name: Table Definitions
+      type: text
+      default: "[]"
+
+init:
+  - step: load-namespace
+    namespace: metabase.driver.rest
