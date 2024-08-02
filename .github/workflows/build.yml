@@ -28,7 +28,7 @@ jobs:
 
       - name: Install Clojure CLI
         run: |
-          wget https://github.com/clojure/brew-install/releases/download/1.11.3.1463/linux-install.sh &&
+          curl -L -O https://github.com/clojure/brew-install/releases/download/1.11.3.1463/linux-install.sh &&
           sudo bash ./linux-install.sh
 
       - name: Build REST driver

@@ -6,13 +6,20 @@
 
 (driver/register! :rest)
 
-(doseq [[feature supported?] {:expression-aggregations false
-                              :schemas                 false
-                              :set-timezone            false}]
+(doseq [[feature supported?] {:native-parameters                      true
+                              :convert-timezone                       false
+                              :basic-aggregations                     false
+                              :case-sensitivity-string-filter-options false
+                              :date-arithmetics                       false
+                              :temporal-extract                       false
+                              :schemas                                false
+                              :test/jvm-timezone-setting              false
+                              :fingerprint                            false
+                              :upload-with-auto-pk                    false}]
   (defmethod driver/database-supports? [:rest feature] [_driver _feature _db] supported?))
 
 (defmethod driver/can-connect? :rest
-  [_ details]
+  [_ _details]
   true)
 
 (defmethod driver/display-name :rest [_] "REST API")
@@ -33,3 +40,7 @@
   [_driver query _context respond]
   (let [[results-metadata rows] (rest.client/execute-query query)]
     (respond results-metadata rows)))
+
+(defmethod driver/substitute-native-parameters :rest
+  [_driver inner-query]
+  (rest.client/substitute-native-parameters inner-query))

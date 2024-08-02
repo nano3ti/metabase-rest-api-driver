@@ -22,18 +22,18 @@ Driver has the following parameters:
 
 Can be used in SQL Editor or in table definition
 
-```
+```json
 {
     "path": "/tables/1", // Path to API endpoint
     "method": "post", // HTTP method. Default: "get"
     "body": {}, // Request json body. Optional
-    "headers": {}, // Extra headers. Optional
+    "headers": {} // Extra headers. Optional
 }
 ```
 
 ## Required Api response format
 
-```
+```json
 {
     "info": {
         "name": "Table1",

@@ -1,6 +1,6 @@
 info:
   name: Metabase REST API Driver
-  version: 1.0.0-SNAPSHOT-0.1.0
+  version: 1.0.0-SNAPSHOT-0.2.0
   description: Allows Metabase to connect to REST API service.
 driver:
   name: rest
@@ -19,6 +19,10 @@ driver:
     #     required: false
     - name: auth-token
       display-name: Token
+      type: string
+      required: false
+    - name: db-info-path
+      display-name: Path to DB info API
       type: string
       required: false
     - name: tables
